@@ -3,7 +3,7 @@ Part 1 Pseudo
 Variables:
 edgeHash = [startNode] => [endNode => weight]
 internal time
-cycle time (how long until you send)
+cycle time (how long until you send) 
 
 Functions:
 *** connect(node,port,message) -> connects and sends a message
@@ -25,19 +25,21 @@ Functions:
 	type = first line of file
 	case "Timer"
 		for (line: file)
-			// If the current node does not have an edge in the file
-				// Send the file to all the current node's neighbors, but not the source node
-				// return
+			// If node recieving the message does not have the edge corresponding to the current line
+				// add the edge and mark a boolean indicating that the file had new information
+		// After the file is read, Send the file to all the current node's neighbors, but not the source
+		   node and return
 	case "Update"
-		// If the current node needs to make an update,
+		// If node recieving the message needs to update (or add) the edge corresponding to the current line, update the edge
 			// Send the file to all the current node's neighbors, but not the source node
 			// return
 	case "Delete"
-		// If the current node has the edge
+		// If node recieving the message has the edge corresponding to the current line, delete the edge
 			// Send the file to all the current node's neighbors, but not the source node
 			// return
 
 Other notes:
 	- In main, whenever there is a timer, update, or delete
-	- Send all your edges to all your neighbors
+		-> Make the appropriate file (with the correct type at the top) and send to all your neighbors
 	- We might want to make EDGEB make an update file too
+	- We might want to change 'startListening' function to receiveFile with appropriate parsing and switching
